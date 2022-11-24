@@ -1,24 +1,13 @@
-import time
-import os
+from fastapi import FastAPI
+import uvicorn
 
-class LogStreamer:
-    def __init__(self, file_handle) -> None:
-        self.file_handle = file_handle
-
-    def read(self):
-        self.file_handle.seek(os.SEEK_SET, os.SEEK_END) # goto EOF
-        while True:
-            line = self.file_handle.readline()
-            if not line:
-                time.sleep(0.5) # wait for new logs
-                continue
-            yield line
+app = FastAPI()
 
 
+@app.get("/read-logs")
+async def read_logs():
+    return "Hello, World!"
 
-log_file = open("logs.log", "r")
 
-log_streamer = LogStreamer(log_file)
-
-for line in log_streamer.read():
-    print(line)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True, log_level="info")
