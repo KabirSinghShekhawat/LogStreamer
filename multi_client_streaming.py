@@ -2,7 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from sseclient import SSEClient
 
-stream_url = "http://localhost:8000/stream"
+stream_url = "http://localhost:8080/stream"
 
 
 def stream_msg(client_no: int):

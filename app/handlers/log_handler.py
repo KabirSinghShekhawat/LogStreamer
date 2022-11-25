@@ -1,8 +1,8 @@
 from fastapi import Request
 
-from app.config import settings
-from app.core.event_generator import event_generator
-from app.core.log_reader import LogReader
+from config import settings
+from core.event_generator import event_generator
+from core.log_reader import LogReader
 
 
 def stream_logs(request: Request):

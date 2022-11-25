@@ -1,15 +1,15 @@
 FROM python:3.10.6-slim
 
-ENV DIRPATH=/app/LogStreamer
+ENV DIRPATH=/LogStreamer
 WORKDIR $DIRPATH
 
-COPY ./requirements.txt $DIRPATH/requirements.txt
+COPY ./requirements.txt .
 
-RUN pip install --no-cache-dir --upgrade -r $DIRPATH/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
-COPY /app $DIRPATH/
-COPY client.sh multi_client_streaming.py main.py $DIRPATH/
+COPY /app ./app/
+COPY client.sh multi_client_streaming.py ./
 
-EXPOSE 8000
+EXPOSE 8080
 
-CMD [ "python", "main.py" ]
+CMD [ "python", "app/main.py" ]
