@@ -1,0 +1,10 @@
+67.78.34.170 - - [26/Feb/2008:02:52:27 -0600] "GET /ply/ply-1.6.tar.gz HTTP/1.1" 200 12819
+208.97.218.10 - - [28/Feb/2008:12:51:01 -0600] "GET /software.html HTTP/1.1" 200 3163
+203.213.7.130 - - [27/Feb/2008:02:52:24 -0600] "GET /favicon.ico HTTP/1.0" 404 133
+87.74.95.23 - - [25/Feb/2008:16:37:02 -0600] "GET /ply/bookplug.gif HTTP/1.1" 200 23903
+222.153.72.162 - - [26/Feb/2008:22:43:28 -0600] "GET / HTTP/1.1" 200 4447
+199.111.194.239 - - [27/Feb/2008:22:02:47 -0600] "GET /favicon.ico HTTP/1.1" 404 133
+210.212.8.60 - - [28/Feb/2008:13:20:52 -0600] "GET /cgi-bin/wiki.pl?SwigFaqLinuxSharedLibraries HTTP/1.0" 200 1624
+128.165.207.58 - - [26/Feb/2008:04:05:10 -0600] "GET /favicon.ico HTTP/1.1" 404 133
+129.192.97.6 - - [28/Feb/2008:06:55:16 -0600] "GET /python/tutorial/beazley_advanced_python/Slides/SLIDE115.HTM HTTP/1.0" 200 1596
+38.98.120.84 - - [28/Feb/2008:07:05:26 -0600] "GET /swill/exec.html HTTP/1.1" 200 12540
