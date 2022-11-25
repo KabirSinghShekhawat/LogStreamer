@@ -6,8 +6,8 @@ from app.handlers import log_handler
 app = FastAPI()
 
 
-@app.get("/read_logs/{id}")
-async def read_logs(id: str, request: Request):
+@app.get("/stream")
+async def read_logs(request: Request):
     event = log_handler.read_logs(request)
     return EventSourceResponse(event)
 

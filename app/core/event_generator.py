@@ -1,5 +1,6 @@
-from fastapi import Request
 import asyncio
+
+from fastapi import Request
 
 STREAM_DELAY = 0.1  # s
 RETRY_TIMEOUT = 1500  # ms
@@ -13,11 +14,9 @@ async def event_generator(request: Request, log_generator):
 
         try:
             async for line in log_generator.read():
-                line_val = await line
-                if line_val:
-                    print(line_val)
-                    yield {"event": "log_update", "retry": RETRY_TIMEOUT, "data": line_val}
-
+                if line:
+                    print(line)
+                    yield {"event": "log_update", "data": line}
                 else:
                     await asyncio.sleep(STREAM_DELAY)
 
