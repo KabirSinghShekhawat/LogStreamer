@@ -1,6 +1,6 @@
 build:
 	sudo docker build --tag=log-streamer .
-remove:
+stop:
 	sudo docker stop stream-server
 run:
 	sudo docker run --rm -it --name stream-server -p 8080:8080 log-streamer
