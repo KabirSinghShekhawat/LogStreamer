@@ -3,6 +3,7 @@ import os
 import sys
 import time
 from random import randint
+
 from app.config import settings
 
 LOG_FILE = settings.OUT_LOG_FILE_PATH
@@ -22,7 +23,7 @@ def run(lines=100):
 
     with open(SEED_FILE, encoding="utf-8") as seed_fh:
         seed_fh.seek(os.SEEK_SET, os.SEEK_END)
-        SEED_FILE_SIZE = seed_fh.tell()
+        seed_file_size = seed_fh.tell()
         seed_fh.seek(os.SEEK_SET)
 
         while True:
@@ -30,7 +31,7 @@ def run(lines=100):
                 break
 
             lines -= 1
-            offset = randint(0, SEED_FILE_SIZE)
+            offset = randint(0, seed_file_size)
             seed_fh.seek(offset)  # random byte offset
             """
             readline twice ensures only legible log data is appended to
@@ -48,8 +49,8 @@ def run(lines=100):
 
 
 if __name__ == "__main__":
-    num_lines = sys.argv[1]
-    if num_lines and num_lines.isdigit():
-        run(int(num_lines))
-    else:
+    if len(sys.argv) < 2:
         run()
+    else:
+        num_lines = sys.argv[1]
+        run(int(num_lines))

@@ -1,14 +1,15 @@
-from sse_starlette.sse import EventSourceResponse
-from fastapi import FastAPI, Request
 import uvicorn
+from fastapi import FastAPI, Request
+from sse_starlette.sse import EventSourceResponse
+
 from app.handlers import log_handler
 
 app = FastAPI()
 
 
 @app.get("/stream")
-async def read_logs(request: Request):
-    event = log_handler.read_logs(request)
+async def stream(request: Request):
+    event = log_handler.stream_logs(request)
     return EventSourceResponse(event)
 
 
