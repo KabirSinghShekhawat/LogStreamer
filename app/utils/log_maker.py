@@ -1,6 +1,6 @@
 import logging
 import os
-import asyncio
+import sys
 import time
 from random import randint
 from app.config import settings
@@ -38,12 +38,18 @@ def run(lines=100):
             """
             seed_fh.readline()
             line = seed_fh.readline()
-            logger.info(line.strip("\n"))
+            line = line.strip("\n")
+
+            logger.info(line)
+            print("log: " + line + "\n")
 
             seed_fh.seek(os.SEEK_SET)
-            # await asyncio.sleep(DELAY)
             time.sleep(DELAY)
 
 
 if __name__ == "__main__":
-    run(100)
+    num_lines = sys.argv[1]
+    if num_lines and num_lines.isdigit():
+        run(int(num_lines))
+    else:
+        run()
