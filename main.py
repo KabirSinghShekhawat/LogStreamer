@@ -13,9 +13,9 @@ async def read_logs(id: str, request: Request):
     return EventSourceResponse(event)
 
 
-@app.get("/generate_logs/{lines}")
-async def make_logs(lines: int):
-    await log_maker.run(lines)
+# @app.get("/generate_logs/{lines}")
+# async def make_logs(lines: int):
+#     await log_maker.run(lines)
 
 
 if __name__ == "__main__":

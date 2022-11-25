@@ -1,5 +1,7 @@
+import logging
 import os
 import asyncio
+import time
 from random import randint
 from app.config import settings
 
@@ -8,13 +10,17 @@ SEED_FILE = settings.SEED_FILE_PATH
 DELAY = settings.WRITE_DELAY
 
 
-async def run(lines=100):
+def run(lines=100):
     """
     append a random log line from seed data to logs every second
     """
-    with open(LOG_FILE, "w", encoding="utf-8") as log_fh, open(
-        SEED_FILE, encoding="utf-8"
-    ) as seed_fh:
+    logger = logging.getLogger("log-stream")
+    logger.setLevel(logging.DEBUG)
+
+    fh = logging.FileHandler(LOG_FILE)
+    logger.addHandler(fh)
+
+    with open(SEED_FILE, encoding="utf-8") as seed_fh:
         seed_fh.seek(os.SEEK_SET, os.SEEK_END)
         SEED_FILE_SIZE = seed_fh.tell()
         seed_fh.seek(os.SEEK_SET)
@@ -32,7 +38,12 @@ async def run(lines=100):
             """
             seed_fh.readline()
             line = seed_fh.readline()
-            log_fh.write(line)
+            logger.info(line.strip("\n"))
 
             seed_fh.seek(os.SEEK_SET)
-            await asyncio.sleep(DELAY)
+            # await asyncio.sleep(DELAY)
+            time.sleep(DELAY)
+
+
+if __name__ == "__main__":
+    run(100)
